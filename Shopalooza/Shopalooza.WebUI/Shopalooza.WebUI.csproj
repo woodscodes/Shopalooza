@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,9 +271,14 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductManager\Edit.cshtml" />
+    <Content Include="Views\ProductManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -284,6 +290,24 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shopalooza.Core\Shopalooza.Core.csproj">
+      <Project>{0de78e19-4e1e-402d-94a2-c5ec3ec195dc}</Project>
+      <Name>Shopalooza.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shopalooza.DataAccess.InMemory\Shopalooza.DataAccess.InMemory.csproj">
+      <Project>{4c6917a1-16e5-4f19-b9de-1fdb0852e3ce}</Project>
+      <Name>Shopalooza.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shopalooza.DataAccess.SQL\Shopalooza.DataAccess.SQL.csproj">
+      <Project>{57fb6427-a5cb-49d4-8e10-25e08f4685e0}</Project>
+      <Name>Shopalooza.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shopalooza.Services\Shopalooza.Services.csproj">
+      <Project>{d78995a9-f66d-49c3-ac6f-3b75a921ce62}</Project>
+      <Name>Shopalooza.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
