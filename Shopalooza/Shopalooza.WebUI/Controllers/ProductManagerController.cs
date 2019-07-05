@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Shopalooza.Core.Models;
+using Shopalooza.Core.ViewModels;
 using Shopalooza.DataAccess.InMemory;
 
 namespace Shopalooza.WebUI.Controllers
@@ -12,24 +13,31 @@ namespace Shopalooza.WebUI.Controllers
     {
         // GET: ProductManager
         private ProductRepository _context;
+        private ProductCategoryRepository _productCategories;
 
         public ProductManagerController()
         {
             _context = new ProductRepository();
+            _productCategories = new ProductCategoryRepository();
         }
 
 
         public ActionResult Index()
         {
-            List<Product> products = _context.Collection().ToList();
+            var products = _context.Collection().ToList();
 
             return View(products);
         }
 
         public ActionResult Create()
         {
-            Product product = new Product();            
-            return View(product);
+            var productManagerViewModel = new ProductManagerViewModel
+            {
+                Product = new Product(),
+                ProductCategories = _productCategories.Collection()
+            };
+                     
+            return View(productManagerViewModel);
         }
 
         [HttpPost]
@@ -40,9 +48,10 @@ namespace Shopalooza.WebUI.Controllers
             else
             {
                 _context.Insert(product);
-                _context.Commit();
-                return RedirectToAction("Index");
-            }            
+                _context.Commit();                
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(string id)
@@ -52,7 +61,15 @@ namespace Shopalooza.WebUI.Controllers
             if (product == null)
                 return HttpNotFound();
             else
-                return View(product);
+            {
+                var productManagerViewModel = new ProductManagerViewModel
+                {
+                    Product = product,
+                    ProductCategories = _productCategories.Collection()
+                };
+
+                return View(productManagerViewModel);
+            }                
         }
 
         [HttpPost]
@@ -99,8 +116,7 @@ namespace Shopalooza.WebUI.Controllers
             {
                 _context.Delete(id);
                 _context.Commit();
-            }
-                
+            }                
 
             return RedirectToAction("Index");
         }
