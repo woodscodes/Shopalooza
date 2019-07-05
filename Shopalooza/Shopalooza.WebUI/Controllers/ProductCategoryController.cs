@@ -10,11 +10,11 @@ namespace Shopalooza.WebUI.Controllers
 {
     public class ProductCategoryController : Controller
     {
-        private ProductCategoryRepository _context;
+        private InMemoryRepository<ProductCategory> _context;
 
         public ProductCategoryController()
         {
-            _context = new ProductCategoryRepository();
+            _context = new InMemoryRepository<ProductCategory>();
         }
         
         // GET: ProductCategory

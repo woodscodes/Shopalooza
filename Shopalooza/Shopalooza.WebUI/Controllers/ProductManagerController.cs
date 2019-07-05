@@ -12,13 +12,13 @@ namespace Shopalooza.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         // GET: ProductManager
-        private ProductRepository _context;
-        private ProductCategoryRepository _productCategories;
+        private InMemoryRepository<Product> _context;
+        private InMemoryRepository<ProductCategory> _productCategories;
 
         public ProductManagerController()
         {
-            _context = new ProductRepository();
-            _productCategories = new ProductCategoryRepository();
+            _context = new InMemoryRepository<Product>();
+            _productCategories = new InMemoryRepository<ProductCategory>();
         }
 
 

@@ -7,17 +7,10 @@ using System.Threading.Tasks;
 
 namespace Shopalooza.Core.Models
 {
-    public class ProductCategory
-    {
-        public string Id { get; set; }
-
+    public class ProductCategory : BaseEntity
+    {   
         [DisplayName("Product Category")]
         public string Name { get; set; }
-
-        public ProductCategory()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
 
     }
 }
