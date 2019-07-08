@@ -8,7 +8,7 @@ using Shopalooza.WebUI;
 using Shopalooza.WebUI.Controllers;
 
 namespace Shopalooza.WebUI.Tests.Controllers
-{
+{/*
     [TestClass]
     public class HomeControllerTest
     {
@@ -50,5 +50,5 @@ namespace Shopalooza.WebUI.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-    }
+    }*/
 }

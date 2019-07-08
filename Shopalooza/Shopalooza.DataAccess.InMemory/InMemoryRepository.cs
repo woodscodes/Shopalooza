@@ -1,4 +1,5 @@
-﻿using Shopalooza.Core.Models;
+﻿using Shopalooza.Core.Contracts;
+using Shopalooza.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shopalooza.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T : BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         private ObjectCache _cache = MemoryCache.Default;
         private List<T> _items;

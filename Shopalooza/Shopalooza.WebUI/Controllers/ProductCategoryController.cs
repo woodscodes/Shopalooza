@@ -1,4 +1,5 @@
-﻿using Shopalooza.Core.Models;
+﻿using Shopalooza.Core.Contracts;
+using Shopalooza.Core.Models;
 using Shopalooza.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace Shopalooza.WebUI.Controllers
 {
     public class ProductCategoryController : Controller
     {
-        private InMemoryRepository<ProductCategory> _context;
+        private IRepository<ProductCategory> _context;
 
-        public ProductCategoryController()
+        public ProductCategoryController(IRepository<ProductCategory> productContext)
         {
-            _context = new InMemoryRepository<ProductCategory>();
+            _context = productContext;
         }
         
         // GET: ProductCategory
