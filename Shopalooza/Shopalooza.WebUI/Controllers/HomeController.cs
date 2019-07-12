@@ -1,5 +1,6 @@
 ﻿using Shopalooza.Core.Contracts;
 using Shopalooza.Core.Models;
+using Shopalooza.Core.ViewModels;
 using Shopalooza.DataAccess.SQL;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,23 @@ namespace Shopalooza.WebUI.Controllers
             _productCategoryContext = productCategoryContext;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string category = null)
         {
-            var products = _context.Collection().ToList();
-            return View(products);
+            var products = new List<Product>();
+            var categories = _productCategoryContext.Collection().ToList();
+
+            if (category == null)
+                products = _context.Collection().ToList();
+            else
+                products = _context.Collection().Where(p => p.Category == category).ToList();
+
+            var productListViewModel = new ProductListViewModel
+            {
+                Products = products,
+                ProductCategories = categories
+            };
+
+            return View(productListViewModel);
         }
 
         public ActionResult Details(string id)
