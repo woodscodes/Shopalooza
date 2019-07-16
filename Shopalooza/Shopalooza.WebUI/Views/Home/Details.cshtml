@@ -25,12 +25,12 @@
             </dt>
 
             <dd>
-                $@Html.DisplayFor(model => model.Price)
+                @String.Format("{0:c}", Model.Price)
             </dd>
 
             <dt></dt>
             <dd>
-                <a href="#" class="btn btn-default">Add to basket</a>
+                <a href="@Url.Action("AddToBasket", "Basket", new { id = Model.Id })" class="btn btn-default">Add to basket</a>
             </dd>
 
             <dt></dt>

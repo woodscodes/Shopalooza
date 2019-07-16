@@ -68,7 +68,7 @@ namespace Shopalooza.Services
             var basket = GetBasket(httpContextBase, true);
             var basketItem = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
 
-            if(basketItem != null)
+            if(basketItem == null)
             {
                 basketItem = new BasketItem()
                 {
@@ -81,7 +81,7 @@ namespace Shopalooza.Services
             }
             else
             {
-                basketItem.Quantity++;
+                basketItem.Quantity = basketItem.Quantity + 1;
             }
 
             _basketContext.Commit();
